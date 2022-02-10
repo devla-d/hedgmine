@@ -1,0 +1,119 @@
+{% extends "layout/base.html" %} {% block title %} Contact Us {% endblock title %} {% block header %} {% include "com/navbar.html" %} {% endblock header %} {% block content %}
+<!--banner-->
+<div class="welcome-banner set-bgwelcome" data-setbg="/static/images/welcomebg.jpg">
+    <div class="container">
+        <div class="row justify-content-center align-items-center ml-b-30">
+            <div class="col-lg-10 text-center mrb-30">
+                <div class="welcome-banner-content">
+
+                    <div class="breadcrumb-area">
+                        <h2 class="title">Contact Us</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="https://africgoldm.com">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--banner-->
+
+
+<!--contact-->
+<section class="contact-section register-section pd-t-120">
+    <div class="container">
+
+        <div class="row justify-content-center ml-b-30">
+            <div class="col-lg-5 mrb-30">
+                <div class="contact-thumb">
+                    <img src="https://africgoldm.com/assets/images/frontend/contact_us/606c0eb443bbf1617694388.png" alt="">
+                </div>
+            </div>
+            <div class="col-lg-7 mrb-30">
+                <div class="register-form-area">
+                    <h3 class="title mb-4">Write to us</h3>
+
+                    <form method="POST" class="register-form">
+                        <input type="hidden" name="_token" value="3UHTRMy6fTFf3NPlD9RIe5mvGVMXtozRnGsRGv0j">
+                        <div class="row justify-content-center ml-b-20">
+                            <div class="col-lg-6 form-group">
+                                <label class="register-icon"><i class="fas fa-pen"></i></label>
+                                <input type="text" class="form-control" name="name" value="" placeholder="Your Name">
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label class="register-icon"><i class="fas fa-envelope"></i></label>
+                                <input type="text" class="form-control" name="email" value="" placeholder="Your Email">
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label class="register-icon"><i class="fas fa-book"></i></label>
+                                <input type="text" class="form-control" name="subject" value="" placeholder="Subject">
+                            </div>
+
+
+                            <div class="col-lg-12 form-group">
+                                <textarea name="message" class="form-control" placeholder="Your Message"></textarea>
+                            </div>
+                            <div class="col-lg-12 form-group text-center">
+                                <button type="submit" class="cmn-btn btn-block ">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact-info-area " style="padding: 70px 0;">
+        <div class="container">
+            <div class="contact-info-item-area">
+                <div class="row justify-content-center ml-b-30">
+                    <div class="col-lg-4 col-md-6 col-sm-8 text-center mrb-30">
+                        <div class="contact-info-item">
+                            <i class="fas fa fa-map-marker-alt"></i>
+                            <h3 class="title">Address</h3>
+                            <p>AfricGold Head Office, Lagos 125666, NG</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-8 text-center mrb-30">
+                        <div class="contact-info-item item-one">
+                            <i class="fas fa-envelope"></i>
+                            <h3 class="title">Email Address</h3>
+                            <p>support@africgold.com</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-8 text-center mrb-30">
+                        <div class="contact-info-item item-two">
+                            <i class="fas fa-phone"></i>
+                            <h3 class="title">Phone Number</h3>
+                            <p>+2349128169826</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--contact-->
+
+
+
+{% endblock content %}
+
+
+<!--footer-->
+{% block footer %} {% include "com/footer.html" %} {% endblock footer %}
+<!--footer-->
+
+
+
+
+
+
+
+
+
+
+{% block scripts %} {% endblock scripts %}

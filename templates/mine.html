@@ -1,0 +1,150 @@
+{% extends "layout/base.html" %} {% block title %} Minning {% endblock title %} {% block style %}
+<style>
+    .dashboard-footer {
+        bottom: -50px;
+        position: relative;
+        text-align: center;
+    }
+    
+    .dashboard-footer h4 {
+        font-size: 15px;
+        font-weight: 700;
+        color: #272d43;
+    }
+</style>{% endblock style %} {% block header %} {% include "com/navbar.html" %} {% endblock header %} {% block content %}
+<!--banner-->
+<div class="welcome-banner set-bgwelcome" data-setbg="/static/images/welcomebg.jpg">
+    <div class="container">
+        <div class="row justify-content-center align-items-center ml-b-30">
+            <div class="col-lg-10 text-center mrb-30">
+                <div class="welcome-banner-content">
+
+                    <div class="breadcrumb-area">
+                        <h2 class="title">Mine</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="https://africgoldm.com">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Mine</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--banner-->
+
+
+<div class="user-dashboard mt-5">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                <div class="d-widget d-flex flex-wrap">
+                    <div class="col-8">
+                        <span class="caption">Next Earnings</span> {% if user.is_expired == False %}
+                        <h6 class="currency-amount" id="next_earning_date" data-date="{{ user.next_earnings|date:'M d, Y H:m:s' }}"></h6>
+                        {% else %}
+                        <h6 class="currency-amount">0d:0h:0m:0s</h6>
+                        {% endif %}
+                    </div>
+                    <div class="col-4">
+                        <div class="icon ml-auto">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- d-widget-two end -->
+            </div>
+
+
+            <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                <div class="d-widget d-flex flex-wrap">
+                    <div class="col-8">
+                        <span class="caption">End Date</span>
+                        <h6 class="currency-amount"> {{ user.end_date|date:'M. d, Y' }}</h6>
+                    </div>
+                    <div class="col-4">
+                        <div class="icon ml-auto">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- d-widget-two end -->
+            </div>
+
+            <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                <div class="d-widget d-flex flex-wrap">
+                    <div class="col-8">
+                        <span class="caption">Total Earnings</span>
+                        <h6 class="currency-amount">&#8358;{{ user.balance }}</h6>
+                    </div>
+                    <div class="col-4">
+                        <div class="icon ml-auto">
+                            <i class="la la-exchange"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- d-widget-two end -->
+            </div>
+
+
+
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-xl-4 col-sm-6 mb-30 py-2">
+                <div class="d-widget d-flex flex-wrap">
+                    <div class="col-8">
+                        <span class="caption">Status</span> {% if user.is_expired == False %}
+                        <h6 class="currency-amount text-success">
+                            Active
+                        </h6>
+
+                        {% else %}
+
+                        <h6 class="currency-amount text-warning">
+                            Expired </h6>
+
+                        {% endif %}
+                    </div>
+                    <div class="col-4">
+                        <div class="icon ml-auto">
+                            <i class="las la-hourglass-half"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- d-widget-two end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
+
+
+<!--footer-->
+{% block footer %}
+<footer class="dashboard-footer">
+    <div class="container">
+        <div class="justify-content-center">
+            <h4>Copyright © 2021 Africtoken All Rights Reserved</h4>
+        </div>
+    </div>
+</footer>
+{% endblock footer %}
+<!--footer-->
+
+
+
+
+
+
+
+
+
+{% block scripts %}
+<script>
+</script>{% endblock scripts %}

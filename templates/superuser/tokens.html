@@ -1,0 +1,76 @@
+ {% extends "layout/superuser.html" %} {% block stylesheet %} {% endblock stylesheet %} {% block content %}
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <div class=" d-flex justify-content-between align-items-start">
+                <h3 class="box-title text-success">Tokens</h3>
+                <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Add</button>
+            </div>
+
+
+
+            <div class="col-xl-12">
+                <ol class="list-group list-group-numbered mt-4">
+                    {% for obj in tokens %}
+                    <li class="list-group-item d-flex justify-content-between align-items-start mt-2">
+
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">{{obj.code}}</div>
+                            &#8358;{{obj.price}}
+                        </div>
+                        {% if obj.is_active == True %}
+                        <span class="badge bg-success rounded-pill mt-2">Active</span> {% else %}
+                        <span class="badge bg-warning rounded-pill mt-2">Inactive</span> {% endif %}
+
+                    </li>
+                    {% endfor %}
+
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelLogout">Create Token!</h5>
+                <button type="button" class="close btn-danger text-white" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+            </div>
+            <form action="/create-token/" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+
+                    <div class=" form-group">
+                        <label for="count">Count</label>
+                        <input type="number" name="count" class="form-control" id="count" required autocomplete="off">
+                    </div>
+                    <div class=" form-group">
+                        <label for="price">Price</label>
+                        <select name="price" id="price" class="form-control custom-select" required>
+                            <option value="3000"> &#8358;3000</option>
+                            <option value="5000"> &#8358;5000</option>
+                            <option value="10000"> &#8358;10000</option>
+                            <option value="15000"> &#8358;15000</option>
+                            <option value="20000"> &#8358;20000</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %} {% block script %} {% endblock script %}

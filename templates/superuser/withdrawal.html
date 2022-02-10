@@ -1,0 +1,65 @@
+{% extends "layout/superuser.html" %} {% load crispy_forms_tags %} {% block stylesheet %} {% endblock stylesheet %} {% block content %}
+
+
+<div class="row">
+    <!-- Column -->
+    <div class="col-lg-4 col-xlg-3 col-md-12">
+        <div class="white-box">
+            <div class="user-bg"> <img width="100%" alt="user" src="/static/superuser/plugins/images/large/img1.jpg">
+                <div class="overlay-box">
+                    <div class="user-content">
+                        <a href="javascript:void(0)"><img src="https://ui-avatars.com/api/?background=000&&name={{withdrawal.user.fullname}}&&color=fd961a" class="thumb-lg img-circle" alt="img"></a>
+                        <h4 class="text-white mt-2">{{withdrawal.user.username}}</h4>
+                        <h5 class="text-white mt-2">{{withdrawal.user.email}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="user-btm-box mt-5 d-md-flex">
+                <div class="col-md-4 col-sm-4 text-center">
+                    <p>Bal</p>
+                    <h4>&#8358;{{withdrawal.user.balance}}</h4>
+
+                </div>
+                <div class="col-md-4 col-sm-4 text-center">
+                    <p>Referral Bal
+                    </p>
+                    <h4>&#8358;{{withdrawal.user.bonus}}</h4>
+                </div>
+                <div class="col-md-4 col-sm-4 text-center">
+                    <p>No Of Referral</p>
+                    <h4>{{withdrawal.user.refferal}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+    <!-- Column -->
+    <div class="col-lg-8 col-xlg-9 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <form class="form-horizontal form-material" method="post" action="">
+                    {% csrf_token %} {{ form|crispy }} {% if withdrawal.status == "approved" %} {% elif withdrawal.status == "declined" %} {% else %}
+                    <div class="row">
+                        <div class="col-6 form-group mt-4">
+                            <input type="submit" class="btn btn-success btn-block" value="Approve" name="submit">
+                        </div>
+                        <div class="col-6 form-group mt-4">
+                            <input type="submit" class="btn btn-danger text-white btn-block  " value="Decline" name="submit">
+
+                        </div>
+                        <!--<div class="col-4 form-group mt-4">
+
+                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary btn-block">Message</a>
+                        </div>-->
+
+                    </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+</div>
+
+
+{% endblock content %} {% block script %} {% endblock script %}

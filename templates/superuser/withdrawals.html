@@ -1,0 +1,35 @@
+{% extends "layout/superuser.html" %} {% block stylesheet %} {% endblock stylesheet %} {% block content %}
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <h3 class="box-title">Withdrawals</h3>
+
+
+            <div class="col-xl-12">
+                <ol class="list-group list-group-numbered mt-4">
+                    {% for obj in withdrawals %}
+                    <li class="list-group-item mt-2">
+                        <a class=" d-flex justify-content-between align-items-start" href="/withdrawal/{{obj.id}}">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">{{obj.user.username}}</div>
+                                {{obj.date}}
+                            </div>
+                            {% if obj.status == 'pending' %}
+                            <span class="badge bg-warning rounded-pill mt-2">pending</span> {% elif obj.status == 'declined' %}
+                            <span class="badge bg-danger rounded-pill mt-2">declined</span> {% else %}
+                            <span class="badge bg-success rounded-pill mt-2">approved</span> {% endif %}
+                        </a>
+                    </li>
+                    {% endfor %}
+
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %} {% block script %} {% endblock script %}

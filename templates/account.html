@@ -1,0 +1,183 @@
+{% extends "layout/base.html" %} {% load hosts %} {% load crispy_forms_tags %} {% block title %} My Account {% endblock title %} {% block style %}
+<style>
+    .dashboard-footer {
+        bottom: -50px;
+        position: relative;
+        text-align: center;
+    }
+    
+    .dashboard-footer h4 {
+        font-size: 15px;
+        font-weight: 700;
+        color: #272d43;
+    }
+    
+    .account-detail-body li {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid #222
+    }
+    
+    .account-detail-body li h5 {
+        color: #272d43;
+    }
+    
+    .user__avatar {
+        border-radius: 50%;
+        width: 20%;
+    }
+    
+    .balances {
+        padding: 16px;
+    }
+    
+    .balances .bal-item h3 {
+        font-size: 15px;
+    }
+    
+    .balances .bal-item p {
+        color: #272d43;
+        font-size: 26px;
+    }
+    
+    ul {
+        padding: 0 !important;
+    }
+</style>{% endblock style %} {% block content %}
+
+
+
+
+
+
+
+<div class="accountpage ">
+    <div class="container ">
+        <div class="row justify-content-center text-center mt-5">
+            <div class="col-lg-8 ">
+                <div class="section-header text-center">
+                    <h2 class="section-title "><a href="{% host_url 'userpage' host 'dashboard' %}"><span class="fa fa-arrow-left" title="Dashboard" style="float: left;"></span></a> Update <span class="p-color">Account </span></h2>
+                    <span class="title-border"></span>
+
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center ">
+            <div class="col-lg-6 ">
+                <form action=" " method="POST" class="login-form " novalidate>
+                    {% csrf_token %} {{ form|crispy }}
+
+                    <div class="row ">
+                        <div class="col-12 form-group ">
+                            <button type="submit " class="cmn-btn btn-block ">Submit</button>
+                        </div>
+
+
+                    </div>
+
+                </form>
+                <hr>
+                <div class="text-center footer-area ">
+
+                    <div>
+
+                        <p class="text-muted ">Copyright © 2021 Africtoken LTD All Rights Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %} {% block scripts %}
+<script>
+</script>{% endblock scripts %}
+
+
+
+
+<div class="user-dashboard mt-5">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-8 ">
+                <div class="section-header text-center">
+                    <h2 class="section-title "> Update <span class="p-color">Account </span></h2>
+                    <span class="title-border"></span>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Column -->
+            <div class="col-lg-4 col-xlg-3 col-md-12">
+                <div class="white-box">
+                    <div class="user-bg">
+                        <div class="overlay-box">
+                            <div class="user-content text-center">
+                                <a href="javascript:void(0)"><img src="/static/images/about-us.png" class="thumb-lg user__avatar img-circle" alt="img"></a>
+                                <h4 class=" mt-2">{{user.username}}</h4>
+                                <h5 class=" mt-2">{{user.email}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="balances  mt-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="bal-item">
+                                    <h3>Total Bal</h3>
+                                    <p>&#8358;{{user.balance}}</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bal-item ml-4">
+                                    <h3>Referral Bal</h3>
+                                    <p>&#8358;{{user.bonus}}</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bal-item">
+                                    <h3>No Of Referral</h3>
+                                    <p>{{user.refferal}}</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bal-item ml-4">
+                                    <h3>End Date</h3>
+                                    <p>{{user.end_date|date:"M d"}}</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-lg-8 col-xlg-9 col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="form-horizontal form-material" method="post" action="">
+
+                            {% csrf_token %} {{ form|crispy }}
+                            <div class="row">
+
+                                <div class="col-9 form-group mt-4">
+                                    <input type="submit" class="btn btn-success btn-block" value="Update" name="submit">
+                                </div>
+                                <div class="col-4 form-group mt-4">
+                                    <h3>Dashboard </h3>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+        </div>
+    </div>
+</div>

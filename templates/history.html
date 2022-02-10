@@ -1,0 +1,133 @@
+{% extends "layout/base.html" %} {% block title %} Withdrawal Log {% endblock title %} {% block style %}
+<style>
+    .dashboard-footer {
+        bottom: -50px;
+        position: relative;
+        text-align: center;
+    }
+    
+    .dashboard-footer h4 {
+        font-size: 15px;
+        font-weight: 700;
+        color: #272d43;
+    }
+</style>{% endblock style %} {% block header %} {% include "com/navbar.html" %} {% endblock header %} {% block content %}
+<!--banner-->
+<div class="welcome-banner set-bgwelcome" data-setbg="/static/images/welcomebg.jpg">
+    <div class="container">
+        <div class="row justify-content-center align-items-center ml-b-30">
+            <div class="col-lg-10 text-center mrb-30">
+                <div class="welcome-banner-content">
+
+                    <div class="breadcrumb-area">
+                        <h2 class="title">History </h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="https://africgoldm.com">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Log</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--banner-->
+
+
+<div class="user-dashboard mt-5">
+    <div class="container">
+        {% if withdrawals %}
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="table-responsive-sm mt-3">
+                    <table class="table   table-borderlss">
+                        <thead>
+                            <tr>
+                                <th scope="col text-white">Amount</th>
+                                <th scope="col">Date</th>
+                                <th scope="col" class="text-right">Account Name</th>
+                                <th scope="col" class="text-right">Account Number</th>
+                                <th scope="col" class="text-right"> Bank</th>
+                                <th scope="col" class="text-right">Status</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for obj in withdrawals %}
+                            <tr>
+                                <td scope="row"><span class="text-success">&#8358;{{ obj.amount }}</span></td>
+                                <td class="text-muted">{{ obj.date }}</td>
+                                <td class="text-muted">{{ obj.account_name }}</td>
+                                <td class="text-muted">{{ obj.account_number }}</td>
+                                <td class="text-muted">{{ obj.bank }}</td>
+
+
+                                {% if obj.status == 'pending' %}
+                                <td class="text-warning">pending</td>
+                                {% elif obj.status == 'declined' %}
+                                <td class="text-danger">declined</td>
+                                {% else %}
+                                <td class="text-success">approved <small>On {{ obj.approved_date|date:"M d" }}</small></td>
+                                {% endif %}
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        {% else %}
+
+
+
+
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-8 mt-5">
+                <div class="card   mt-5 " style="padding: 20px;">
+                    <div class="text-center">
+                        <h5 class="text-prim">No Current Withdrawal</h5>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        {% endif %}
+    </div>
+</div>
+
+
+
+{% endblock content %}
+
+
+<!--footer-->
+{% block footer %}
+<footer class="dashboard-footer">
+    <div class="container">
+        <div class="justify-content-center">
+            <h4>Copyright © 2021 Africtoken All Rights Reserved</h4>
+        </div>
+    </div>
+</footer>
+{% endblock footer %}
+<!--footer-->
+
+
+
+
+
+
+
+
+
+{% block scripts %}
+<script>
+</script>{% endblock scripts %}

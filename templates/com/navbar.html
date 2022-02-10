@@ -1,0 +1,44 @@
+{% load static %} {% load hosts %}
+
+
+<!--header-->
+<header class="header">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg topbar p-0">
+            <a class="site-logo site-title" href="#"><img src="https://africgoldm.com/assets/images/logoIcon/logo.png" alt="site-logo"></a>
+
+            <button class="navbar-toggler customized ml-auto" type="button">
+                        <span class="fas fa-bars sidebar-toggler "></span>
+                    </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav main-menu ml-auto mr-auto">
+                    {% if user.is_authenticated %}
+                    <li><a href="{% host_url 'userpage' host 'dashboard' %}" class="active">Dashboard</a></li>
+                    <li><a href="{% host_url 'minepage' host 'dashboard' %}">Mine</a></li>
+                    <li><a href="{% host_url 'refferalpage' host 'dashboard' %}">Refferals</a></li>
+                    <li><a href="{% host_url 'withdraw' host 'dashboard' %}">Withdraw</a></li>
+                    <li><a href="{% host_url 'history' host 'dashboard' %}">History</a></li>
+                    <li><a href="{% host_url 'accountpage' host 'account' %}">Account</a></li>
+                    <li><a class="getstarted logout text-danger" href="{% host_url 'logout' host 'account' %}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% host_url 'homepage' host 'www' %}">Home</a></li>
+                    <li><a href="{% host_url 'aboutpage' host 'www' %}"> About</a></li>
+                    <li><a href="#">How it works</a></li>
+                    <li><a href="{% host_url 'contactpage' host 'www' %}">Contact</a></li>
+                    <li><a href="{% host_url 'verifycodepage' host 'www' %}">Verify Pin</a></li>
+                    <li><a href="{% host_url 'vendorspage' host 'www' %}">Vendors</a></li>
+                    <li><a class="getstarted" href="{% host_url 'registerpage' host 'account' %}">Get Started</a></li>
+                    {% endif %}
+                    <!--<div class="header-small">
+                                <a href="https://africgoldm.com/register" class="cmn-btn">Register</a>
+                                <a href="https://africgoldm.com/login" class="cmn-btn-active">Login</a>
+                            </div>-->
+
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+</header>
+<!--header-->

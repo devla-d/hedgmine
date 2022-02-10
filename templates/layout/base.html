@@ -1,0 +1,121 @@
+{% load hosts %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock title %} - AfricToken</title>
+
+    <link rel="stylesheet" href="/static/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/responsive.css">
+    <link rel="stylesheet" href="/static/vendor/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="/static/vendor/bootstrap-datepicker/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/static/css/animate.css">
+    <link rel="stylesheet" href="/static/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/static/css/magnific-popup.css">
+    <link rel="stylesheet" href="/static/css/toastr.min.css"> {% block style %} {% endblock style %}
+    <style>
+
+    </style>
+</head>
+
+
+<body>
+    <div class=" justify-content-center " style="display: none;">
+        {% if messages %} {% for message in messages %}
+        <h5 class="messages" data-msg="{{ message }}"></h5>
+        {% endfor %} {% endif %}
+    </div>
+
+    <!--sidebar-->
+
+    <div class="sidebar ">
+        <div class="sider-header">
+            <h3><i class="fa fa-times dismis-bar"></i></h3>
+        </div>
+
+
+
+        <ul class="menu unstyled">
+            {% if user.is_authenticated %}
+            <li><a href="{% host_url 'userpage' host 'dashboard' %}" class="active">Dashboard</a></li>
+            <li><a href="{% host_url 'minepage' host 'dashboard' %}">Mine</a></li>
+            <li><a href="{% host_url 'refferalpage' host 'dashboard' %}">Refferals</a></li>
+            <li><a href="{% host_url 'withdraw' host 'dashboard' %}">Withdraw</a></li>
+            <li><a href="{% host_url 'history' host 'dashboard' %}">History</a></li>
+            <li><a href="{% host_url 'accountpage' host 'account' %}">Account</a></li>
+            <li><a class="getstarted logout " href="{% host_url 'logout' host 'account' %}">Logout</a></li>
+
+
+            {% else %}
+            <li><a href="{% host_url 'homepage' host 'www' %}">Home</a></li>
+            <li><a href="{% host_url 'aboutpage' host 'www' %}"> About</a></li>
+            <li><a href="#">How it works</a></li>
+            <li><a href="{% host_url 'contactpage' host 'www' %}">Contact</a></li>
+            <li><a href="{% host_url 'verifycodepage' host 'www' %}">Verify Pin</a></li>
+            <li><a href="{% host_url 'vendorspage' host 'www' %}">Vendors</a></li>
+            <li><a href="{% host_url 'loginpage' host 'account' %}">Login</a></li>
+            <li><a href="{% host_url 'registerpage' host 'account' %}">Register</a></li>
+
+            {% endif %}
+        </ul>
+        <h5 class="text-center text-prim">Follow Us</h5>
+        <div class="sidebarfooter">
+            <a href="$"><i class="fab fa-facebook"></i></a>
+            <a href="$"><i class="fab fa-instagram"></i></a>
+            <a href="$"><i class="fab fa-twitter"></i></a>
+        </div>
+
+    </div>
+    <!--sidebar-->
+
+    <main class="wrapper">
+        <!--header-->
+        {% block header %} {% endblock header %}
+        <!--header-->
+        <!--content-->
+        {% block content %} {% endblock content %}
+        <!--content-->
+        <!-- footer -->
+        {% block footer %} {% endblock footer %}
+        <!--footer-->
+
+
+
+    </main>
+
+
+
+
+
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="/static/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/static/vendor/select2/dist/js/select2.min.js"></script>
+    <script src="/static/js/jquery.magnific-popup.min.js"></script>
+    <script src="/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/static/js/particles.js"></script>
+    <script src="/static/js/wow.js"></script>
+    <script src="/static/js/toastr.min.js"></script>
+    {% if messages %}
+    <script src="/static/js/toastr-init.js"></script>
+    {% endif %}
+    <script src="/static/js/circle-progress.min.js"></script>
+    <script src="/static/js/circle-progress-init.js"></script>
+
+    <script src="/static/js/clipboard.min.js"></script>
+    <script>
+        new ClipboardJS('.btn');
+    </script>
+
+
+    <script src="/static/js/custom.js"></script>
+    <script src="/static/js/scripts.js"></script>
+    {% block scripts %} {% endblock scripts %}
+</body>
+
+</html>
